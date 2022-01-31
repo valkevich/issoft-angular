@@ -5,10 +5,10 @@
     <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
     <mat-card-content>
         <p>
-            {{user?.activated ? 'Active' : 'Non-active'}}
+            {{userStatus ? 'Active' : 'Non-active'}}
         </p>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-stroked-button color="primary" (click)="changeUserStatus()">Change status</button>
+        <button mat-stroked-button color="primary" [disabled]="!userIsAdult()" (click)="changeUserStatus()">Change status</button>
     </mat-card-actions>
 </mat-card>

@@ -1,4 +1,7 @@
 <div class="cards">
-    <app-card class="card-content" *ngFor="let user of users" [user]="user" [isHiddenCardsShown]="hiddenCardsShown"></app-card>
+    <app-card class="card-content" *ngFor="let user of users" [user]="user" [isHiddenCardsShown]="hiddenCardsShown"
+        [userStatus]="user.activated"></app-card>
 </div>
-<button class="users-handler__button" mat-raised-button color="primary" [disabled]="isAllCardsActive()" (click)="cardsHandler()">{{hiddenCardsShown ? 'Hide' : 'Show all'}}</button>
+<button class="users-handler__button" mat-raised-button color="primary" [disabled]="isAllCardsActive()"
+    (click)="cardsHandler()">{{hiddenCardsShown ? 'Hide' : 'Show all'}}</button>
+<button mat-raised-button color="warn" (click)="diactivateUsers()" diactivateUsers>Diactivate users</button>

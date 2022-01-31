@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChildren } from '@angular/core';
 import { CardComponent } from 'src/app/components/card/card.component';
 import { IUser, UserService } from 'src/app/services/user.service';
 
@@ -11,28 +11,26 @@ import { IUser, UserService } from 'src/app/services/user.service';
 
 
 export class CardShellComponent implements OnInit {
-  @ViewChild(CardComponent, {static: false})
-  private Card: CardComponent | undefined;
+  @ViewChildren(CardComponent)
+  private cards: CardComponent[] | undefined;
 
   users: IUser[] = [];
   hiddenCardsShown = true;
 
   constructor(private userService: UserService) { }
 
-  getUsers() {
+  ngOnInit(): void {
     this.users = this.userService.getUsers();
   }
 
-  ngOnInit(): void {
-    this.getUsers()
+  cardsHandler() {
+    this.hiddenCardsShown = !this.hiddenCardsShown;
   }
 
-  // cardsHandler() {
-  //   this.hiddenCardsShown = !this.hiddenCardsShown;
-  // }
-
-  cardsHandler() {
-    this.Card?.changeUserStatus()
+  diactivateUsers() {
+    this.cards?.forEach((card) => {
+      card.diactivateUser();
+    })
   }
 
   isAllCardsActive() {
