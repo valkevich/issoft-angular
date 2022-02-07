@@ -2,20 +2,25 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
-import { CardComponent } from 'src/app/components/card/card.component';
-import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
+
+
+import { CardComponent } from './components/card/card.component';
 
 
 
 @NgModule({
-  declarations: [CardComponent, NavbarComponent],
+  declarations: [CardComponent],
   imports: [
     CommonModule,
     MatCardModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule
   ],
-  exports: [CardComponent, NavbarComponent]
+  exports: [CardComponent]
 })
 
 export class SharedModule { }

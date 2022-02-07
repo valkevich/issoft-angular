@@ -1,0 +1,14 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation-link {
+    margin-left: 30px;
+    text-decoration: none;
+    color: #000;
+}

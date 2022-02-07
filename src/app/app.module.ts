@@ -5,15 +5,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SharedModule } from './modules/shared/shared.module';
 import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { UsersModule } from './modules/users/users.module';
+import { VehiclesModule } from './modules/vehicles/vehicles.module';
 
-import { CardShellComponent } from './containers/card-shell/card-shell.component';
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
+import { NotFoundPageComponent } from './core/components/not-found-page/not-found-page.component';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CardShellComponent,
+    NavbarComponent,
+    NotFoundPageComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -21,7 +29,10 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatTabsModule,
-    SharedModule
+    SharedModule,
+    MatToolbarModule,
+    UsersModule,
+    VehiclesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
