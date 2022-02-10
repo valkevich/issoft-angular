@@ -4,4 +4,5 @@ export interface IVehicle {
     releaseYear: number;
     number: string;
     photo: string;
+    id: number;
 }

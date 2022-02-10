@@ -3,4 +3,6 @@ export interface ICard {
     age: number;
     info: string;
     photo: string;
+    id: number;
+    favoriteStatus: boolean;
 }

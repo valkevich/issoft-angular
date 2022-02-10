@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ICard } from 'src/app/modules/shared/interfaces/card.interface';
 import { IUser } from '../../interfaces/users.interface';
 
 @Component({
@@ -8,4 +9,11 @@ import { IUser } from '../../interfaces/users.interface';
 })
 export class UserListComponent {
   @Input() users: IUser[];
+  @Input() favorites: ICard[];
+  @Output() changeFavoriteStatusClick = new EventEmitter<ICard>();
+
+  public onChangeFavoriteStatus(cardData: ICard): void {    
+    this.changeFavoriteStatusClick.emit(cardData)
+  }
+
 }

@@ -1,24 +1,39 @@
 <h2>Add user</h2>
 <form [formGroup]="usersGroup">
     <mat-form-field appearance="fill">
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="name">
+        <mat-label>First name</mat-label>
+        <input matInput formControlName="firstName" required>
+        <mat-error *ngIf="usersGroup.get('firstName').invalid">First name is incorrect</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Last name</mat-label>
+        <input matInput formControlName="lastName" required>
+        <mat-error *ngIf="usersGroup.get('lastName').invalid">Last name is incorrect</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" required>
+        <mat-error *ngIf="usersGroup.get('email').invalid">Email is incorrect</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Age</mat-label>
         <input matInput formControlName="age">
+        <mat-error *ngIf="usersGroup.get('age').invalid">Age is incorrect</mat-error>
     </mat-form-field>
     <mat-radio-group aria-label="Select an option">
         <input class="form-radio__button" type="radio" formControlName="gender" value="male">Male
         <input class="form-radio__button" type="radio" formControlName="gender" value="female">Female
+        <mat-error *ngIf="usersGroup.get('gender').invalid">Gender is incorrect</mat-error>
       </mat-radio-group>
     <mat-form-field appearance="fill">
         <mat-label>Department</mat-label>
         <input matInput formControlName="department">
+        <mat-error *ngIf="usersGroup.get('department').invalid">Department is incorrect</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Company</mat-label>
         <input matInput formControlName="company">
+        <mat-error *ngIf="usersGroup.get('company').invalid">Company is incorrect</mat-error>
     </mat-form-field>
     <input type="file" class="file-uploader" (change)="handleFileInput($event.target.files)">
     <button mat-raised-button color="primary" (click)="addUser()">Add user</button>

@@ -1,1 +1,1 @@
-<app-user-list class="user-list" [users]="usersDataForCards"></app-user-list>
+<app-user-list class="user-list" [users]="usersDataForCards" [favorites]="favorites" (changeFavoriteStatusClick)="changeFavoriteStatus($event)"></app-user-list>

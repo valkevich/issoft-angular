@@ -1,1 +1,7 @@
-<app-card *ngFor="let vehicle of vehicles" [data]="vehicle"></app-card>
+<div class="vehicle-cards">
+    <app-card *ngFor="let vehicle of vehicles" [data]="vehicle" (changeFavoriteStatusClick)="onChangeFavoriteStatus($event)"></app-card>
+</div>
+<h2>Favorites</h2>
+<div class="vehicle-favorites__cards">
+    <app-card *ngFor="let favorite of favorites" [data]="favorite" (changeFavoriteStatusClick)="onChangeFavoriteStatus($event)"></app-card>
+</div>

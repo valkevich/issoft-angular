@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ICard } from '../../shared/interfaces/card.interface';
+import { Observable, of } from 'rxjs';
 import { IUser } from '../interfaces/users.interface';
 
 
@@ -10,60 +10,63 @@ import { IUser } from '../interfaces/users.interface';
 
 export class UserService {
     private users: IUser[] = [{
-        name: 'Nikita',
+        firstName: 'Nikita',
+        lastName: 'Shelby',
+        email: 'n.shelby@gmail.com',
         age: 21,
         gender: 'male',
         department: 'FE',
         company: 'Issoft',
-        photo: '../../../../../assets/images/cartman.png'
+        photo: '../../../../../assets/images/cartman.png',
+        id: 1
+
     },
     {
-        name: 'Svetlana',
+        firstName: 'Svetlana',
+        lastName: 'McConahy',
+        email: 's.McConahy@gmail.com',
         age: 16,
         gender: 'female',
         department: 'FE',
         company: 'Issoft',
-        photo: '../../../../../assets/images/wendy.png'
+        photo: '../../../../../assets/images/wendy.png',
+        id: 2
     },
     {
-        name: 'Egor',
+        firstName: 'Egor',
+        lastName: 'Doe',
+        email: 'e.doe@gmail.com',
         age: 12,
         gender: 'male',
         department: 'FE',
         company: 'Issoft',
-        photo: '../../../../../assets/images/kenny.png'
+        photo: '../../../../../assets/images/kenny.png',
+        id: 3
     },
     {
-        name: 'Maria',
+        firstName: 'Maria',
+        lastName: 'Hlose',
+        email: 'm.hlose@gmail.com',
         age: 34,
         gender: 'female',
         department: 'FE',
         company: 'Issoft',
-        photo: '../../../../../assets/images/marjorine.png'
+        photo: '../../../../../assets/images/marjorine.png',
+        id: 4
     },
     ];
 
-    private editUserData(userData: IUser): ICard {
-        return {
-            name: userData.name,
-            age: userData.age,
-            info: `Company: ${userData.company}, department: ${userData.department}, gender: ${userData.gender}`,
-            photo: userData.photo
-        }
+    public getUsers(): Observable<IUser[]> {
+        return of(this.users)
     }
 
-    public getUsers(): IUser[] {
-        return this.users;
-    }
-
-    public addUser(userData: IUser): void {
+    public addUser(userData: IUser): Observable<IUser[]> {
         this.users.push(userData);
+        return of(this.users)
     }
 
-    public createCardDataFromUsers(): ICard[] {
-        const editedData: ICard[] = []
-        this.users.forEach(user => editedData.push(this.editUserData(user)))
-        return editedData;
+    public generateId(): number {
+        return this.users[this.users.length - 1].id + 1;
     }
 }
 

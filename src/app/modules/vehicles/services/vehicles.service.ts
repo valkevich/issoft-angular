@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { ICard } from '../../shared/interfaces/card.interface';
 import { IVehicle } from '../interfaces/vehicle.interface';
 
@@ -12,52 +13,42 @@ export class VehiclesService {
     color: 'black',
     releaseYear: 2011,
     number: '8739-SV7',
-    photo: '../../../../../assets/images/vehicles/bmw.jpg'
+    photo: '../../../../../assets/images/vehicles/bmw.jpg',
+    id: 1
   },
   {
     name: 'Nissan',
     color: 'green',
     releaseYear: 1998,
     number: '0959-VS5',
-    photo: '../../../../../assets/images/vehicles/nissan.jpg'
+    photo: '../../../../../assets/images/vehicles/nissan.jpg',
+    id: 2
   },
   {
     name: 'Volkswagen',
     color: 'white',
     releaseYear: 2017,
     number: '1241-KE2',
-    photo: '../../../../../assets/images/vehicles/vw.jpg'
+    photo: '../../../../../assets/images/vehicles/vw.jpg',
+    id: 3
   },
   {
     name: 'Lamborghini',
     color: 'yellow',
     releaseYear: 2015,
     number: '7777-KK7',
-    photo: '../../../../../assets/images/vehicles/lambo.jpg'
+    photo: '../../../../../assets/images/vehicles/lambo.jpg',
+    id: 4
   }
   ];
 
-  private editVehicleData(vehicleData: IVehicle): ICard {
-    return {
-      name: vehicleData.name,
-      age: vehicleData.releaseYear,
-      info: `Color: ${vehicleData.color}, number: ${vehicleData.number}`,
-      photo: vehicleData.photo
-    }
+  public getVehicles(): Observable<IVehicle[]> {
+    return of(this.vehicles);
   }
 
-  public getVehicles(): IVehicle[] {
-    return this.vehicles;
-  }
-
-  public addVehicle(vehicleData: IVehicle): void {
+  public addVehicle(vehicleData: IVehicle): Observable<IVehicle[]> {
     this.vehicles.push(vehicleData);
-  }
-
-  public createCardDataFromVehicles(): ICard[] {
-    const editedData: ICard[] = []
-    this.vehicles.forEach(vehicle => editedData.push(this.editVehicleData(vehicle)))
-    return editedData;
+    return of(this.vehicles)
   }
 
 }
