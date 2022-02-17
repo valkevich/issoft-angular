@@ -44,7 +44,7 @@ export class AddAddressesComponent implements OnInit {
 
   public removeAddress(index: number): void {
     let addresses = this.parentFormGroup.get('addresses') as FormArray;
-    addresses.removeAt(index)
+    if (addresses.controls.length > 1) addresses.removeAt(index)
   }
 
   public addAddress(): void {
