@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { IUser } from '../../interfaces/users.interface';
+import { UserValidationService } from '../../services/user-validation.service';
 import { UserService } from '../../services/users.service';
 
 @Component({
@@ -11,10 +13,14 @@ import { UserService } from '../../services/users.service';
 export class AddUserFormComponent {
   @Output() onAddUser = new EventEmitter<IUser>();
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private userValidationService: UserValidationService) { }
 
-  private emailIsUniqueValidator(control: FormControl): { [s: string]: boolean } | null {
-    return control.value.includes('@gmail.com') ? null : { emailHasNotRightDomain: true }
+  private emailHasRightDomain = (control: FormControl): { [s: string]: boolean } | null => {
+    return this.userValidationService.emailHasDomain(control.value) ? null : { emailHasRightDomain: true }
+  }
+
+  private emailIsUnique = (control: FormControl): Observable<ValidationErrors> => {
+    return this.userValidationService.emailIsUnique(control.value);
   }
 
   private isFormValid(): boolean {
@@ -29,7 +35,7 @@ export class AddUserFormComponent {
     department: new FormControl('', [Validators.required, Validators.min(6)]),
     company: new FormControl('', [Validators.required, Validators.max(35)]),
     photo: new FormControl(''),
-    email: new FormControl('', [Validators.required, Validators.email, this.emailIsUniqueValidator]),
+    email: new FormControl('', [Validators.required, Validators.email, this.emailHasRightDomain], [this.emailIsUnique]),
     id: new FormControl(this.userService.generateId())
   })
 

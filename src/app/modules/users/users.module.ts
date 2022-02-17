@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { AddAddressesComponent } from './components/add-addresses/add-addresses.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
         UserListComponent,
         AddUserFormShellComponent,
         AddUserFormComponent,
+        AddAddressesComponent,
     ],
     imports: [
         BrowserModule,

@@ -24,7 +24,7 @@
         <input class="form-radio__button" type="radio" formControlName="gender" value="male">Male
         <input class="form-radio__button" type="radio" formControlName="gender" value="female">Female
         <mat-error *ngIf="usersGroup.get('gender').invalid">Gender is incorrect</mat-error>
-      </mat-radio-group>
+    </mat-radio-group>
     <mat-form-field appearance="fill">
         <mat-label>Department</mat-label>
         <input matInput formControlName="department">
@@ -36,5 +36,6 @@
         <mat-error *ngIf="usersGroup.get('company').invalid">Company is incorrect</mat-error>
     </mat-form-field>
     <input type="file" class="file-uploader" (change)="handleFileInput($event.target.files)">
+    <app-add-addresses [parentFormGroup]="usersGroup"></app-add-addresses>
     <button mat-raised-button color="primary" (click)="addUser()">Add user</button>
 </form>
