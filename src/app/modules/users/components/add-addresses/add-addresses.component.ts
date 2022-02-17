@@ -14,7 +14,7 @@ export class AddAddressesComponent implements OnInit {
 
   private addressesGroup: FormGroup;
 
-  private initAddressFormGroup() {
+  private initAddressFormGroup() : FormGroup {
     this.addressesGroup = new FormGroup({
       addressLine: new FormControl('', Validators.required),
       city: new FormControl(''),
