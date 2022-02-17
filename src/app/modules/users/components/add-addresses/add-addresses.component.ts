@@ -31,9 +31,7 @@ export class AddAddressesComponent implements OnInit {
     return (this.parentFormGroup.controls['addresses'] as FormArray).controls;
   }
 
-  public toggleZipValidator(zipControl: FormControl, cityControl: FormControl, f): void {
-    console.log(f);
-    
+  public toggleZipValidator(zipControl: FormControl, cityControl: FormControl): void {
     if (cityControl.value) {
       zipControl.setValidators(Validators.required);
       zipControl.enable();
