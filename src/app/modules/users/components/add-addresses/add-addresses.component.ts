@@ -12,15 +12,25 @@ import { Subscription } from 'rxjs';
 export class AddAddressesComponent implements OnInit {
   @Input() parentFormGroup: FormGroup;
 
-  private addressesGroup: FormGroup;
+  private toggleZipValidator(addressGroup: FormGroup): void {
+    if (addressGroup.get('city').value) {
+      addressGroup.get('zip').setValidators(Validators.required);
+      addressGroup.get('zip').enable();
+    } else {
+      addressGroup.get('zip').clearValidators();
+      addressGroup.get('zip').disable();
+    }
+    addressGroup.get('zip').updateValueAndValidity();
+  }
 
-  private initAddressFormGroup() : FormGroup {
-    this.addressesGroup = new FormGroup({
+  private initAddressFormGroup(): FormGroup {
+    const addressesGroup = new FormGroup({
       addressLine: new FormControl('', Validators.required),
       city: new FormControl(''),
-      zip: new FormControl('')
+      zip: new FormControl({ value: '', disabled: true })
     })
-    return this.addressesGroup;
+    addressesGroup.get('city').valueChanges.subscribe(() => this.toggleZipValidator(addressesGroup))
+    return addressesGroup;
   }
 
   ngOnInit(): void {
@@ -31,17 +41,6 @@ export class AddAddressesComponent implements OnInit {
     return (this.parentFormGroup.controls['addresses'] as FormArray).controls;
   }
 
-  public toggleZipValidator(zipControl: FormControl, cityControl: FormControl): void {
-    if (cityControl.value) {
-      zipControl.setValidators(Validators.required);
-      zipControl.enable();
-    } else {
-      zipControl.disable();
-      zipControl.clearValidators();
-    }
-    zipControl.updateValueAndValidity();
-  }
-
   public removeAddress(index: number): void {
     let addresses = this.parentFormGroup.get('addresses') as FormArray;
     if (addresses.controls.length > 1) addresses.removeAt(index)
@@ -50,7 +49,7 @@ export class AddAddressesComponent implements OnInit {
   public addAddress(): void {
     let addresses = this.parentFormGroup.get('addresses') as FormArray;
     addresses.push(this.initAddressFormGroup());
-    // console.log((this.parentFormGroup.get('addresses') as FormArray).controls);
+    console.log((this.parentFormGroup.get('addresses') as FormArray).controls);
   }
 
 }

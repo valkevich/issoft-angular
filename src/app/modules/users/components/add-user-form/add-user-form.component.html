@@ -1,5 +1,5 @@
 <h2>Add user</h2>
-<form [formGroup]="usersGroup">
+<div [formGroup]="usersGroup" class="add-user__form">
     <mat-form-field appearance="fill">
         <mat-label>First name</mat-label>
         <input matInput formControlName="firstName" required>
@@ -36,6 +36,5 @@
         <mat-error *ngIf="usersGroup.get('company').invalid">Company is incorrect</mat-error>
     </mat-form-field>
     <input type="file" class="file-uploader" (change)="handleFileInput($event.target.files)">
-    <app-add-addresses [parentFormGroup]="usersGroup"></app-add-addresses>
     <button mat-raised-button color="primary" (click)="addUser()">Add user</button>
-</form>
+</div>

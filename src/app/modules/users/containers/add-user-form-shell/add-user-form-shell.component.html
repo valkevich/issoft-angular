@@ -1,2 +1,4 @@
-<app-add-user-form (onAddUser)="addUser($event)"></app-add-user-form>
-
+<form [formGroup]="parentFormGroup"><form>
+    <app-add-user-form (onAddUser)="addUser($event)"></app-add-user-form>
+    <app-add-addresses [parentFormGroup]="usersGroup"></app-add-addresses>
+</form>
