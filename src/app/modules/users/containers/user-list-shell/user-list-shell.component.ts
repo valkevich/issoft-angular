@@ -25,6 +25,8 @@ export class UserListShellComponent implements OnInit {
       this.usersDataForCards = this.mapToCardService.mapUsersToCards(this.users);
     })
     this.getFavoritesUserCards();
+    console.log(this.users);
+    
   }
 
   public getFavoritesUserCards(): void {

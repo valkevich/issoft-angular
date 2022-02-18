@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { IUser } from '../../interfaces/users.interface';
@@ -10,10 +10,15 @@ import { UserService } from '../../services/users.service';
   templateUrl: './add-user-form.component.html',
   styleUrls: ['./add-user-form.component.scss']
 })
-export class AddUserFormComponent {
-  @Output() onAddUser = new EventEmitter<IUser>();
+export class AddUserFormComponent implements OnInit {
+  @Input() parentFormGroup: FormGroup;
 
   constructor(private userService: UserService, private userValidationService: UserValidationService) { }
+
+  ngOnInit(): void {
+    this.parentFormGroup.addControl('userData', this.usersGroup);
+    console.log(this.parentFormGroup);
+  }
 
   private emailHasRightDomain = (control: FormControl): { [s: string]: boolean } | null => {
     return this.userValidationService.emailHasDomain(control.value) ? null : { emailHasRightDomain: true }
@@ -48,14 +53,6 @@ export class AddUserFormComponent {
       this.usersGroup.patchValue({
         photo: reader.result
       })
-    }
-  }
-
-
-  public addUser(): void {
-    if (this.isFormValid()) {
-      const user: IUser = this.usersGroup.value;
-      this.onAddUser.emit(user);
     }
   }
 }

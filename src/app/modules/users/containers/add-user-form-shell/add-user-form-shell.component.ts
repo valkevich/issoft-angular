@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { IUser } from '../../interfaces/users.interface';
 import { UserService } from '../../services/users.service';
 
 @Component({
@@ -7,12 +9,35 @@ import { UserService } from '../../services/users.service';
   templateUrl: './add-user-form-shell.component.html',
   styleUrls: ['./add-user-form-shell.component.scss']
 })
-export class AddUserFormShellComponent {
+export class AddUserFormShellComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router) { }
 
-  public addUser(user) {
-    this.userService.addUser(user)
-    this.router.navigate([''])
+  public addUserGroup: FormGroup;
+
+  ngOnInit() {
+    this.addUserGroup = new FormGroup({});
   }
+
+  private isFormValid(): boolean {
+    if (this.addUserGroup.valid) {
+      return true;
+    }
+    this.addUserGroup.markAllAsTouched();
+    return false;
+  }
+
+  data(): IUser {
+    const user = Object.assign({}, this.addUserGroup.controls['userData'].value);
+    user.addresses = this.addUserGroup.controls['addresses'].value;
+    return user;
+  }
+
+  public addUser(): void {
+    if (this.isFormValid()) {
+      this.userService.addUser(this.data());
+      this.router.navigate(['']);
+    }
+  }
+
 }

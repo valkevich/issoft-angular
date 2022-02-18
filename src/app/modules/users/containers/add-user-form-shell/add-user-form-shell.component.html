@@ -1,4 +1,6 @@
-<form [formGroup]="parentFormGroup"><form>
-    <app-add-user-form (onAddUser)="addUser($event)"></app-add-user-form>
-    <app-add-addresses [parentFormGroup]="usersGroup"></app-add-addresses>
+<form [formGroup]="addUserGroup">
+    <h2>Add user</h2>
+    <app-add-user-form [parentFormGroup]="addUserGroup" class="user-details__form"></app-add-user-form>
+    <app-add-addresses [parentFormGroup]="addUserGroup" class="user-address__form"></app-add-addresses>
+    <button mat-raised-button color="primary" class="add-user__button" (click)="addUser()" type="submit">Add user</button>
 </form>

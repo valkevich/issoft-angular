@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
 export class AddAddressesComponent implements OnInit {
   @Input() parentFormGroup: FormGroup;
 
+
   private toggleZipValidator(addressGroup: FormGroup): void {
     if (addressGroup.get('city').value) {
       addressGroup.get('zip').setValidators(Validators.required);
@@ -35,6 +36,7 @@ export class AddAddressesComponent implements OnInit {
 
   ngOnInit(): void {
     this.parentFormGroup.addControl('addresses', new FormArray([this.initAddressFormGroup()]));
+    console.log(this.parentFormGroup);
   }
 
   public getFormsControls(): any {
@@ -49,7 +51,7 @@ export class AddAddressesComponent implements OnInit {
   public addAddress(): void {
     let addresses = this.parentFormGroup.get('addresses') as FormArray;
     addresses.push(this.initAddressFormGroup());
-    console.log((this.parentFormGroup.get('addresses') as FormArray).controls);
+    console.log(this.parentFormGroup);
   }
 
 }

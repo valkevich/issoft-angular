@@ -1,5 +1,16 @@
 .address-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+mat-form-field {
+    width: 90%;
+}
+
+.add-address__button {
+    display: block;
+    margin: 0 auto;
 }

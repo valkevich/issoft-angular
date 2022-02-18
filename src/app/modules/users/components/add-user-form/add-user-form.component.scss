@@ -1,7 +1,8 @@
 .add-user__form {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    
 
     .form-radio__button {
         margin-right: 10px;
@@ -10,5 +11,9 @@
 
     .file-uploader {
         margin-bottom: 20px;
+    }
+
+    mat-form-field {
+        width: 90%;
     }
 }
