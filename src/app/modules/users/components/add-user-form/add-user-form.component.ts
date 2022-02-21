@@ -1,7 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { IUser } from '../../interfaces/users.interface';
 import { UserValidationService } from '../../services/user-validation.service';
 import { UserService } from '../../services/users.service';
 
@@ -17,7 +16,6 @@ export class AddUserFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.parentFormGroup.addControl('userData', this.usersGroup);
-    console.log(this.parentFormGroup);
   }
 
   private emailHasRightDomain = (control: FormControl): { [s: string]: boolean } | null => {
@@ -26,10 +24,6 @@ export class AddUserFormComponent implements OnInit {
 
   private emailIsUnique = (control: FormControl): Observable<ValidationErrors> => {
     return this.userValidationService.emailIsUnique(control.value);
-  }
-
-  private isFormValid(): boolean {
-    return this.usersGroup.invalid ? false : true;
   }
 
   public usersGroup = new FormGroup({

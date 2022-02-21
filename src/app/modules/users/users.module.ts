@@ -12,6 +12,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { AddAddressesComponent } from './components/add-addresses/add-addresses.component';
+import { EditUserShellComponent } from './containers/edit-user-shell/edit-user-shell.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { AddAddressesComponent } from './components/add-addresses/add-addresses.
         AddUserFormShellComponent,
         AddUserFormComponent,
         AddAddressesComponent,
+        EditUserShellComponent,
     ],
     imports: [
         BrowserModule,

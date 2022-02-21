@@ -36,7 +36,6 @@ export class AddAddressesComponent implements OnInit {
 
   ngOnInit(): void {
     this.parentFormGroup.addControl('addresses', new FormArray([this.initAddressFormGroup()]));
-    console.log(this.parentFormGroup);
   }
 
   public getFormsControls(): any {
@@ -51,7 +50,6 @@ export class AddAddressesComponent implements OnInit {
   public addAddress(): void {
     let addresses = this.parentFormGroup.get('addresses') as FormArray;
     addresses.push(this.initAddressFormGroup());
-    console.log(this.parentFormGroup);
   }
 
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { delay, Observable, of } from 'rxjs';
 import { IUser } from '../interfaces/users.interface';
 
 
@@ -18,7 +18,12 @@ export class UserService {
         department: 'FE',
         company: 'Issoft',
         photo: '../../../../../assets/images/cartman.png',
-        id: 1
+        id: 1,
+        addresses: [{
+            addressLine: 'Chapaeva, 5',
+            city: 'Minsk',
+            zip: "223311"
+        }]
 
     },
     {
@@ -30,7 +35,12 @@ export class UserService {
         department: 'FE',
         company: 'Issoft',
         photo: '../../../../../assets/images/wendy.png',
-        id: 2
+        id: 2,
+        addresses: [{
+            addressLine: 'Chapaeva, 5',
+            city: 'Minsk',
+            zip: "223311"
+        }]
     },
     {
         firstName: 'Egor',
@@ -41,7 +51,12 @@ export class UserService {
         department: 'FE',
         company: 'Issoft',
         photo: '../../../../../assets/images/kenny.png',
-        id: 3
+        id: 3,
+        addresses: [{
+            addressLine: 'Chapaeva, 5',
+            city: 'Minsk',
+            zip: "223311"
+        }]
     },
     {
         firstName: 'Maria',
@@ -52,7 +67,12 @@ export class UserService {
         department: 'FE',
         company: 'Issoft',
         photo: '../../../../../assets/images/marjorine.png',
-        id: 4
+        id: 4,
+        addresses: [{
+            addressLine: 'Chapaeva, 5',
+            city: 'Minsk',
+            zip: "223311"
+        }]
     },
     ];
 
@@ -67,6 +87,15 @@ export class UserService {
 
     public generateId(): number {
         return this.users[this.users.length - 1].id + 1;
+    }
+
+    public findUserById(id: number): Observable<IUser> {
+        let usersData: IUser;
+        const users = this.getUsers();
+        users.subscribe((users) => {
+            usersData = users.find(user => user.id === id);
+        })
+        return of(usersData);
     }
 }
 

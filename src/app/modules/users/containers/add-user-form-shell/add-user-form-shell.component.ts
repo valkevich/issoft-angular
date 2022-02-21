@@ -27,7 +27,7 @@ export class AddUserFormShellComponent implements OnInit {
     return false;
   }
 
-  data(): IUser {
+  private getUserData(): IUser {
     const user = Object.assign({}, this.addUserGroup.controls['userData'].value);
     user.addresses = this.addUserGroup.controls['addresses'].value;
     return user;
@@ -35,7 +35,7 @@ export class AddUserFormShellComponent implements OnInit {
 
   public addUser(): void {
     if (this.isFormValid()) {
-      this.userService.addUser(this.data());
+      this.userService.addUser(this.getUserData());
       this.router.navigate(['']);
     }
   }
