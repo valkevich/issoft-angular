@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { delay, Observable, of } from 'rxjs';
+import { delay, Observable, of, map } from 'rxjs';
 import { IUser } from '../interfaces/users.interface';
 
 
@@ -77,12 +77,11 @@ export class UserService {
     ];
 
     public getUsers(): Observable<IUser[]> {
-        return of(this.users)
+        return of(this.users).pipe(delay(500));
     }
 
-    public addUser(userData: IUser): Observable<IUser[]> {
+    public addUser(userData: IUser): void {
         this.users.push(userData);
-        return of(this.users)
     }
 
     public generateId(): number {
@@ -90,12 +89,21 @@ export class UserService {
     }
 
     public findUserById(id: number): Observable<IUser> {
-        let usersData: IUser;
-        const users = this.getUsers();
-        users.subscribe((users) => {
-            usersData = users.find(user => user.id === id);
-        })
-        return of(usersData);
+        return this.getUsers().pipe(
+            map((users) => {
+                return users.find(user => user.id === id)
+            }),
+            delay(1000)
+        )
+    }
+
+    public editUser(newUserData: IUser) {
+        this.findUserById(newUserData.id).pipe(
+            map(user => {
+                const index = this.users.indexOf(user);
+                this.users.splice(index, 1, newUserData);
+            })
+        )
     }
 }
 

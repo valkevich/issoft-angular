@@ -9,9 +9,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { UsersModule } from './modules/users/users.module';
 import { VehiclesModule } from './modules/vehicles/vehicles.module';
 
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { NotFoundPageComponent } from './core/components/not-found-page/not-found-page.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -21,7 +23,7 @@ import { NotFoundPageComponent } from './core/components/not-found-page/not-foun
     AppComponent,
     NavbarComponent,
     NotFoundPageComponent
-    
+
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { NotFoundPageComponent } from './core/components/not-found-page/not-foun
     SharedModule,
     MatToolbarModule,
     UsersModule,
-    VehiclesModule
+    VehiclesModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ICard } from 'src/app/modules/shared/interfaces/card.interface';
 import { FavoriteService } from 'src/app/modules/shared/services/favorite.service';
 import { MapToCardService } from 'src/app/modules/shared/services/map-to-card.service';
@@ -19,12 +20,15 @@ export class UserListShellComponent implements OnInit {
   constructor(private userService: UserService, private mapToCardService: MapToCardService, private favoriteService: FavoriteService) { }
 
   ngOnInit(): void {
-    const users = this.userService.getUsers();
+    const users: Observable<IUser[]> = this.userService.getUsers();
     users.subscribe((users: IUser[]) => {
       this.users = users;
       this.usersDataForCards = this.mapToCardService.mapUsersToCards(this.users);
+      console.log(this.users);
     })
-    this.getFavoritesUserCards();    
+
+
+    this.getFavoritesUserCards();
   }
 
   public getFavoritesUserCards(): void {

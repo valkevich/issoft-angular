@@ -2,5 +2,6 @@
     <h2>Edit user</h2>
     <app-add-user-form [parentFormGroup]="editUserGroup" class="user-details__form"></app-add-user-form>
     <app-add-addresses [parentFormGroup]="editUserGroup" class="user-address__form"></app-add-addresses>
-    <button mat-raised-button color="primary" class="edit-user__button" type="submit">Edit user</button>
+    <button mat-raised-button color="primary" class="edit-user__button" type="button" (click)="editUser()">Edit
+        user</button>
 </form>

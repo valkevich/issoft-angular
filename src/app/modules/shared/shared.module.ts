@@ -7,21 +7,24 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 
 import { CardComponent } from './components/card/card.component';
+import { ModalWindowComponent } from './components/modal-window/modal-window.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
 
 @NgModule({
-  declarations: [CardComponent],
+  declarations: [CardComponent, ModalWindowComponent],
   imports: [
     CommonModule,
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    RouterModule
+    RouterModule,
+    MatDialogModule
   ],
-  exports: [CardComponent]
+  exports: [CardComponent, ModalWindowComponent]
 })
 
 export class SharedModule { }

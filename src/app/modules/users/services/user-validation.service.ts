@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ValidationErrors } from '@angular/forms';
-import { map, Observable } from 'rxjs';
+import { map, Observable, of, take } from 'rxjs';
 import { IUser } from '../interfaces/users.interface';
 import { UserService } from './users.service';
 
@@ -11,12 +11,13 @@ export class UserValidationService {
 
   constructor(private userService: UserService) { }
 
-  private getUsersEmails(): string[] {
-    let emails: string[];
-    this.userService.getUsers().subscribe((users: IUser[]) => {
-      emails = users.map(user => user.email)
-    })
-    return emails;
+  private getUsersEmails(): Observable<string[]> {
+    return this.userService.getUsers().pipe(
+      take(1),
+      map((users) => {
+        return users.map(user => user.email)
+      })
+    )
   }
 
   public emailHasDomain(email: string): boolean {
@@ -24,7 +25,12 @@ export class UserValidationService {
   }
 
   public emailIsUnique(email: string): Observable<ValidationErrors> {
-    const userEmail = this.getUsersEmails().find(e => e === email);
+    let userEmail: string;
+    this.getUsersEmails().subscribe(emails => {
+      userEmail = emails.find(emailFromDataBase => emailFromDataBase === email)
+    })
+
+
     return new Observable<ValidationErrors>((observer) => {
       if (userEmail) {
         observer.next({ isEmailUnique: true });

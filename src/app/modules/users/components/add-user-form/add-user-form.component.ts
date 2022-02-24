@@ -18,6 +18,10 @@ export class AddUserFormComponent implements OnInit {
     this.parentFormGroup.addControl('userData', this.usersGroup);
   }
 
+  a() {
+    this.userValidationService.emailIsUnique('n.shelby@gmail.com')
+  }
+
   private emailHasRightDomain = (control: FormControl): { [s: string]: boolean } | null => {
     return this.userValidationService.emailHasDomain(control.value) ? null : { emailHasRightDomain: true }
   }
