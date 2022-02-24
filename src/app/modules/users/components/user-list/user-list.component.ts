@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ICard } from 'src/app/modules/shared/interfaces/card.interface';
 import { IUser } from '../../interfaces/users.interface';
 
@@ -7,12 +7,12 @@ import { IUser } from '../../interfaces/users.interface';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
-export class UserListComponent {
+export class UserListComponent{
   @Input() users: IUser[];
   @Input() favorites: ICard[];
   @Output() changeFavoriteStatusClick = new EventEmitter<ICard>();
 
-  public onChangeFavoriteStatus(cardData: ICard): void {    
+  public onChangeFavoriteStatus(cardData: ICard): void {
     this.changeFavoriteStatusClick.emit(cardData)
   }
 
