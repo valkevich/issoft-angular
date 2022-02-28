@@ -15,20 +15,20 @@ export class AddAddressesComponent implements OnInit {
 
   private toggleZipValidator(addressGroup: FormGroup): void {
     if (addressGroup.get('city').value) {
-      addressGroup.get('zip').setValidators(Validators.required);
-      addressGroup.get('zip').enable();
+      addressGroup.get('postcode').setValidators(Validators.required);
+      addressGroup.get('postcode').enable();
     } else {
-      addressGroup.get('zip').clearValidators();
-      addressGroup.get('zip').disable();
+      addressGroup.get('postcode').clearValidators();
+      addressGroup.get('postcode').disable();
     }
-    addressGroup.get('zip').updateValueAndValidity();
+    addressGroup.get('postcode').updateValueAndValidity();
   }
 
   private initAddressFormGroup(): FormGroup {
     const addressesGroup = new FormGroup({
-      addressLine: new FormControl('', Validators.required),
+      country: new FormControl('', Validators.required),
       city: new FormControl(''),
-      zip: new FormControl({ value: '', disabled: true })
+      postcode: new FormControl({ value: '', disabled: true })
     })
     addressesGroup.get('city').valueChanges.subscribe(() => this.toggleZipValidator(addressesGroup))
     return addressesGroup;

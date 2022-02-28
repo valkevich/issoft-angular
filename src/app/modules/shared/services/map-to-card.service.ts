@@ -12,10 +12,10 @@ export class MapToCardService {
 
   private editUserData(userData: IUser): ICard {
     return {
-      name: userData.name.title + ' ' + userData.name.first + ' ' + userData.name.last,
-      age: userData.dob.age,
+      name: userData.firstName + ' ' + userData.lastName,
+      age: userData.age,
       info: `gender: ${userData.gender}, email: ${userData.email}`,
-      photo: userData.picture.medium,
+      photo: userData.picture,
       id: userData.id,
       favoriteStatus: false
     }

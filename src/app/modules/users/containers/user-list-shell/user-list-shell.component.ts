@@ -38,7 +38,9 @@ export class UserListShellComponent implements OnInit {
   }
 
   public searchUser(value: string) {
-    this.usersDataForCards = this.mapToCardService.mapUsersToCards(this.userService.getSearchedUsers(value)) as Observable<ICard[]>
+    this.usersDataForCards = this.userService.getSearchedUsers(value).pipe(
+      map(users => this.mapToCardService.mapUsersToCards(users))
+    )
   }
 
 }

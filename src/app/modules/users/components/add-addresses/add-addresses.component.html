@@ -1,8 +1,8 @@
 <div class="address-container" *ngFor="let address of getFormsControls() let i = index" [formGroup]="address">
     <mat-form-field appearance="fill">
-        <mat-label>Address</mat-label>
-        <textarea matInput formControlName="addressLine"></textarea>
-        <mat-error>Address is incorrect</mat-error>
+        <mat-label>Country</mat-label>
+        <textarea matInput formControlName="country"></textarea>
+        <mat-error>Country is incorrect</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>City</mat-label>
@@ -10,9 +10,9 @@
         <mat-error>City is incorrect</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
-        <mat-label>Zip</mat-label>
-        <input matInput formControlName="zip">
-        <mat-error>Zip is required</mat-error>
+        <mat-label>Postcode</mat-label>
+        <input matInput formControlName="postcode">
+        <mat-error>Postcode is required</mat-error>
     </mat-form-field>
     <button mat-raised-button color="warn" (click)="removeAddress(i)">Remove address</button>
 </div>

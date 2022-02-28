@@ -35,7 +35,7 @@ export class EditUserShellComponent implements OnInit {
 
   private mergeNames(): Observable<string[]> {
     return merge(
-      this.editUserGroup.controls['userData'].get('firstName').valueChanges.pipe(),
+      this.editUserGroup.controls['userData'].get('firstName').valueChanges,
       this.editUserGroup.controls['userData'].get('lastName').valueChanges
     )
   }
@@ -48,14 +48,14 @@ export class EditUserShellComponent implements OnInit {
     })
   }
 
-  // private setFormsValues(): void {
-  //   this.userService.findUserById(this.id).subscribe(user => {
-  //     const { addresses, ...userDetails } = user;
-  //     this.editUserGroup.controls['userData'].patchValue(userDetails);
-  //     this.editUserGroup.controls['addresses'].patchValue(addresses);
-  //     this.generateUserEmail();
-  //   });
-  // }
+  private setFormsValues(): void {
+    this.userService.findUserById(this.id).subscribe(user => {
+      const { addresses, ...userDetails } = user;
+      this.editUserGroup.controls['userData'].patchValue(userDetails);
+      this.editUserGroup.controls['addresses'].patchValue(addresses);
+      this.generateUserEmail();
+    });
+  }
 
   private isFormValid(): boolean {
     if (this.editUserGroup.valid) {
@@ -83,7 +83,7 @@ export class EditUserShellComponent implements OnInit {
     )
       .subscribe(data => {
         this.id = +data;
-        // this.setFormsValues();
+        this.setFormsValues();
       })
   }
 

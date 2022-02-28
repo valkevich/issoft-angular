@@ -15,6 +15,7 @@ import { AddAddressesComponent } from './components/add-addresses/add-addresses.
 import { EditUserShellComponent } from './containers/edit-user-shell/edit-user-shell.component';
 import { UserSearchComponent } from './components/user-search/user-search.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { MatIconModule } from '@angular/material/icon';
         ReactiveFormsModule,
         MatRadioModule,
         MatButtonModule,
-        MatIconModule
+        MatIconModule,
+        MatPaginatorModule
     ],
     exports: [
         UserListShellComponent
