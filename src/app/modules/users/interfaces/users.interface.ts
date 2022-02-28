@@ -1,14 +1,22 @@
 import { IAddress } from "./address.interface";
 
 export interface IUser {
-    firstName: string;
-    lastName: string;
+    name: {
+        title: string,
+        first: string,
+        last: string
+    };
     email: string;
-    age: number;
+    dob: {
+        date: string,
+        age: number
+    };
     gender: string;
-    department: string;
-    company: string;
-    photo: string;
+    picture: {
+        large: string,
+        medium: string,
+        thumbnail: string
+    };
     id: number;
     addresses?: IAddress[]
 }
