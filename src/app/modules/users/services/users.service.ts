@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { delay, Observable, of, map } from 'rxjs';
+import { delay, Observable, of, map, tap } from 'rxjs';
+import { HttpService } from 'src/app/core/services/http.service';
 import { IUser } from '../interfaces/users.interface';
 
 
@@ -9,6 +10,9 @@ import { IUser } from '../interfaces/users.interface';
 
 
 export class UserService {
+
+    constructor(private http: HttpService) {}
+
     private users: IUser[] = [{
         firstName: 'Nikita',
         lastName: 'Shelby',
@@ -77,6 +81,7 @@ export class UserService {
     ];
 
     public getUsers(): Observable<IUser[]> {
+        this.http.getUsers()
         return of(this.users).pipe(delay(500));
     }
 
@@ -90,20 +95,19 @@ export class UserService {
 
     public findUserById(id: number): Observable<IUser> {
         return this.getUsers().pipe(
-            map((users) => {
-                return users.find(user => user.id === id)
-            }),
+            map(users => users.find(user => user.id === id)),
             delay(1000)
         )
     }
 
-    public editUser(newUserData: IUser) {
-        this.findUserById(newUserData.id).pipe(
-            map(user => {
-                const index = this.users.indexOf(user);
-                this.users.splice(index, 1, newUserData);
-            })
+    public getSearchedUsers(value: string): Observable<IUser[]> {
+        return this.getUsers().pipe(
+            map((users) => users.filter(user => user.firstName.toLowerCase().includes(value) || user.lastName.toLowerCase().includes(value)))
         )
+    }
+
+    public editUser(newUserData: IUser): void {
+       this.users = this.users.map(user => user.id === newUserData.id ? newUserData : user);
     }
 }
 

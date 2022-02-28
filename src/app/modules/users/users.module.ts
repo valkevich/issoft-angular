@@ -13,6 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { AddAddressesComponent } from './components/add-addresses/add-addresses.component';
 import { EditUserShellComponent } from './containers/edit-user-shell/edit-user-shell.component';
+import { UserSearchComponent } from './components/user-search/user-search.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { EditUserShellComponent } from './containers/edit-user-shell/edit-user-s
         AddUserFormComponent,
         AddAddressesComponent,
         EditUserShellComponent,
+        UserSearchComponent,
     ],
     imports: [
         BrowserModule,
@@ -32,7 +35,8 @@ import { EditUserShellComponent } from './containers/edit-user-shell/edit-user-s
         FormsModule,
         ReactiveFormsModule,
         MatRadioModule,
-        MatButtonModule
+        MatButtonModule,
+        MatIconModule
     ],
     exports: [
         UserListShellComponent

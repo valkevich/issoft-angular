@@ -1,1 +1,3 @@
-<app-user-list class="user-list" [users]="usersDataForCards" [favorites]="favorites" (changeFavoriteStatusClick)="changeFavoriteStatus($event)"></app-user-list>
+<app-user-search (onValueChanged)="searchUser($event)"></app-user-search>
+<app-user-list class="user-list" [users]="usersDataForCards | async" [favorites]="favorites"
+    (changeFavoriteStatusClick)="changeFavoriteStatus($event)"></app-user-list>

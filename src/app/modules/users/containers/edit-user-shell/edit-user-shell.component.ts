@@ -28,6 +28,7 @@ export class EditUserShellComponent implements OnInit {
       trueValueButton: 'OK, let me out!'
     }
   }
+  private saved: boolean = false;
 
   public editUserGroup: FormGroup;
   public id: number;
@@ -92,11 +93,13 @@ export class EditUserShellComponent implements OnInit {
   }
 
   public hasUnsavedData(): boolean {
-    return this.editUserGroup.dirty;
+    return this.saved ? false : this.editUserGroup.dirty;
+
   }
 
   public editUser(): void {
     if (this.isFormValid()) {
+      this.saved = true;
       this.userService.editUser(this.getUserData());
       this.router.navigate(['']);
     }
