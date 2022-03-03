@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { NotFoundPageComponent } from './core/components/not-found-page/not-found-page.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { AuthorizationModule } from './modules/authorization/authorization.module';
 
 
 
@@ -37,7 +38,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     UsersModule,
     VehiclesModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    AuthorizationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

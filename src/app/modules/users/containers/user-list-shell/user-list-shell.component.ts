@@ -39,7 +39,7 @@ export class UserListShellComponent implements OnInit {
   }
 
   public searchUser(value: string) {
-    this.usersDataForCards = this.userService.getSearchedUsers(value).pipe(
+    this.pageSlice = this.userService.getSearchedUsers(value).pipe(
       map(users => this.mapToCardService.mapUsersToCards(users))
     )
   }
