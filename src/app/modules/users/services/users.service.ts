@@ -34,9 +34,9 @@ export class UserService {
     }
 
     public getUsers(): Observable<IUser[]> {
-        return this.http.getUsers().pipe(
+        return this.http.get('?results=50&inc=gender,name,location,email,dob,picture&seed=foobar').pipe(
             map(users => {
-                users.map(user => this.users.push(this.mapToUserInterface(user)))                        
+                users['results'].map(user => this.users.push(this.mapToUserInterface(user)))
                 return this.users;
             })
         )

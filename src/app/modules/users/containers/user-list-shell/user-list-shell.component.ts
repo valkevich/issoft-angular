@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { map, Observable, tap } from 'rxjs';
 import { ICard } from 'src/app/modules/shared/interfaces/card.interface';
 import { FavoriteService } from 'src/app/modules/shared/services/favorite.service';
@@ -16,14 +17,14 @@ export class UserListShellComponent implements OnInit {
   public usersDataForCards: Observable<ICard[]>;
   public type: string = 'users';
   public favorites: ICard[] = [];
+  public pageSlice: Observable<ICard[]>;
 
   constructor(private userService: UserService, private mapToCardService: MapToCardService, private favoriteService: FavoriteService) { }
 
   ngOnInit(): void {
     this.users = this.userService.getUsers()
-    this.usersDataForCards = this.users.pipe(
-      map(users => this.mapToCardService.mapUsersToCards(users))
-    )
+    this.usersDataForCards = this.users.pipe(map(users => this.mapToCardService.mapUsersToCards(users)))
+    this.pageSlice = this.usersDataForCards.pipe(map(cards => cards.slice(0, 8)))
     this.getFavoritesUserCards();
   }
 
@@ -41,6 +42,15 @@ export class UserListShellComponent implements OnInit {
     this.usersDataForCards = this.userService.getSearchedUsers(value).pipe(
       map(users => this.mapToCardService.mapUsersToCards(users))
     )
+  }
+
+  public onPageChange(event: PageEvent) {
+    const startIndex = event.pageIndex * event.pageSize;
+    let endIndex = startIndex + event.pageSize;
+    if (endIndex > 50) {
+      endIndex = 50;
+    }
+    this.pageSlice = this.usersDataForCards.pipe(map(cards => cards.slice(startIndex, endIndex)))
   }
 
 }

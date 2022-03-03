@@ -1,3 +1,6 @@
 <app-user-search (onValueChanged)="searchUser($event)"></app-user-search>
-<app-user-list class="user-list" [users]="usersDataForCards | async" [favorites]="favorites"
+<app-user-list class="user-list" [users]="pageSlice | async" [favorites]="favorites"
     (changeFavoriteStatusClick)="changeFavoriteStatus($event)"></app-user-list>
+<mat-paginator [length]="50" [pageSize]="8" [pageSizeOptions]="[8, 16, 32, 50]"
+    aria-label="Select page" (page)="onPageChange($event)">
+</mat-paginator>
