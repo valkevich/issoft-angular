@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { delay, Observable, of, map, tap } from 'rxjs';
+import { DATABASE } from 'src/app/core/constants/constants';
 import { HttpService } from 'src/app/core/services/http.service';
+import { IUserInDataBase } from '../../authorization/interfaces/data-base-user.interface';
+import { IRegistrationData } from '../../authorization/interfaces/registration-data.interface';
 import { IAddress } from '../interfaces/address.interface';
 import { IUser } from '../interfaces/users.interface';
 
@@ -60,6 +63,20 @@ export class UserService {
 
     public editUser(newUserData: IUser): void {
         this.users = this.users.map(user => user.id === newUserData.id ? newUserData : user);
+    }
+
+    public getUsersFromDataBase(): IUserInDataBase[] {
+        return JSON.parse(DATABASE.getItem('users'));
+    }
+
+    public addUserInDataBase(userData: IRegistrationData): void {
+        const user: IUserInDataBase = {
+            name: userData.name,
+            password: userData.passGroup.password
+        }
+        const users: IUserInDataBase[] = this.getUsersFromDataBase();
+        users.push(user)
+        DATABASE.setItem('users', JSON.stringify(users))
     }
 }
 

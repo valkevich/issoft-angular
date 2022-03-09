@@ -1,0 +1,17 @@
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    mat-form-field {
+        width: 90%;
+    }
+
+    .pass-group {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+}

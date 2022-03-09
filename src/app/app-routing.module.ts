@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundPageComponent } from './core/components/not-found-page/not-found-page.component';
 import { LoginShellComponent } from './modules/authorization/containers/login-shell/login-shell.component';
+import { RegistrationShellComponent } from './modules/authorization/containers/registration-shell/registration-shell.component';
 import { AddUserFormShellComponent } from './modules/users/containers/add-user-form-shell/add-user-form-shell.component';
 import { EditUserShellComponent } from './modules/users/containers/edit-user-shell/edit-user-shell.component';
 import { UserListShellComponent } from './modules/users/containers/user-list-shell/user-list-shell.component';
@@ -10,6 +11,7 @@ import { VehiclesListShellComponent } from './modules/vehicles/containers/vehicl
 
 const routes: Routes = [
   { path: '', component: LoginShellComponent },
+  { path: 'registration', component: RegistrationShellComponent },
   { path: 'users', component: UserListShellComponent },
   { path: 'add-user', component: AddUserFormShellComponent },
   { path: 'vehicles', component: VehiclesListShellComponent },

@@ -25,7 +25,6 @@ import { AuthorizationModule } from './modules/authorization/authorization.modul
     AppComponent,
     NavbarComponent,
     NotFoundPageComponent
-
   ],
   imports: [
     BrowserModule,

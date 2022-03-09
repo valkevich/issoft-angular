@@ -7,13 +7,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { RegistrationShellComponent } from './containers/registration-shell/registration-shell.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 
 
 @NgModule({
   declarations: [
     LoginShellComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationShellComponent,
+    RegistrationComponent
   ],
   imports: [
     CommonModule,

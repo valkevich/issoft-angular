@@ -1,0 +1,19 @@
+form {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 35%;
+    background: #f9fafc;
+    border-radius: 10px;
+    padding: 10px 30px;
+}
+
+.registration-form {
+    width: 100%;
+}
+
+.registration__button {
+    margin-bottom: 10px;
+}
+

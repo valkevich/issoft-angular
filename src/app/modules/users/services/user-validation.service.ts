@@ -20,6 +20,10 @@ export class UserValidationService {
     )
   }
 
+  isPasswordsEqual(password, confirmedPassword): boolean {
+    return password === confirmedPassword ? true : false;
+  }
+
   public emailHasDomain(email: string): boolean {
     return email.includes('@gmail.com') ? true : false;
   }

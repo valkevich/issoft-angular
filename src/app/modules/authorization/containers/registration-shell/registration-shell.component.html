@@ -1,0 +1,5 @@
+<form [formGroup]="registrationGroup">
+    <h2>Registration</h2>
+    <app-registration [parentFormGroup]="registrationGroup" class="registration-form"></app-registration>
+    <button mat-raised-button color="primary" class="registration__button" type="button" (click)="registerUser()">Sign Up</button>
+</form>
