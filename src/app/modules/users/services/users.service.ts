@@ -78,6 +78,21 @@ export class UserService {
         users.push(user)
         DATABASE.setItem('users', JSON.stringify(users))
     }
+
+    public findUserInDB(userName: string, userPassword: string): IUserInDataBase | boolean {
+        const users: IUserInDataBase[] = this.getUsersFromDataBase();
+        return users.find(user => user.name === userName && user.password === userPassword);
+    }
+
+    public getCurrentUser() {
+        return JSON.parse(DATABASE.getItem('currentUser'))
+    }
+
+    public loginUser(userName: string, userPassword: string): void {
+        if (this.findUserInDB(userName, userPassword)) {
+            DATABASE.setItem('currentUser', JSON.stringify(this.findUserInDB(userName, userPassword)));
+        }
+    }
 }
 
 

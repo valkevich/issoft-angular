@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/modules/users/services/users.service';
 import { IRegistrationData } from '../../interfaces/registration-data.interface';
 
@@ -12,7 +13,7 @@ export class RegistrationShellComponent implements OnInit {
 
   public registrationGroup: FormGroup;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.registrationGroup = new FormGroup({});
@@ -31,17 +32,10 @@ export class RegistrationShellComponent implements OnInit {
     return false;
   }
 
-
-
-
-
-
-
-
   public registerUser() {
     if(this.isFormValid()) {
       this.userService.addUserInDataBase(this.getUserData());
+      this.router.navigate(['']);
     }
   }
-
 }

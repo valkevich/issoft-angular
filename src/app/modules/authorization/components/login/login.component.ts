@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.parentFormGroup.addControl('userLoginData', this.loginForm)  
   }
 
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { IUserInDataBase } from 'src/app/modules/authorization/interfaces/data-base-user.interface';
+import { UserService } from 'src/app/modules/users/services/users.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +10,11 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class NavbarComponent {
 
-  public usersGroup = new FormGroup({
-    name: new FormControl('')
-  })
+  constructor(private userService: UserService) { }
+
+  public getCurrentUser(): string {
+    const user = this.userService.getCurrentUser()
+    return user ? user.name : '';
+  }
+
 }
