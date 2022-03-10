@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { UserListShellComponent } from './containers/user-list-shell/user-list-shell.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { SharedModule } from '../shared/shared.module';
@@ -16,6 +15,9 @@ import { EditUserShellComponent } from './containers/edit-user-shell/edit-user-s
 import { UserSearchComponent } from './components/user-search/user-search.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { UsersRoutingModule } from './users-routing.module';
+import { CommonModule } from '@angular/common';
+
 
 
 @NgModule({
@@ -29,7 +31,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         UserSearchComponent,
     ],
     imports: [
-        BrowserModule,
+        CommonModule,
         SharedModule,
         MatFormFieldModule,
         MatInputModule,
@@ -38,7 +40,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         MatRadioModule,
         MatButtonModule,
         MatIconModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        UsersRoutingModule
     ],
     exports: [
         UserListShellComponent

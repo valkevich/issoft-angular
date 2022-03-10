@@ -101,7 +101,7 @@ export class EditUserShellComponent implements OnInit {
     if (this.isFormValid()) {
       this.saved = true;
       this.userService.editUser(this.getUserData());
-      this.router.navigate(['']);
+      this.router.navigate(['users/all-users']);
     }
   }
 

@@ -36,7 +36,7 @@ export class AddUserFormShellComponent implements OnInit {
   public addUser(): void {
     if (this.isFormValid()) {
       this.userService.addUser(this.getUserData());
-      this.router.navigate(['']);
+      this.router.navigate(['users/all-users']);
     }
   }
 

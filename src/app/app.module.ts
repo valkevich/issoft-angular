@@ -34,7 +34,7 @@ import { AuthorizationModule } from './modules/authorization/authorization.modul
     MatTabsModule,
     SharedModule,
     MatToolbarModule,
-    UsersModule,
+    // UsersModule,
     VehiclesModule,
     MatDialogModule,
     HttpClientModule,

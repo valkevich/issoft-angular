@@ -35,7 +35,7 @@ export class LoginShellComponent implements OnInit {
     if (this.isFormValid()) {
       const userData = this.getUserData();
       this.userService.loginUser(userData.name, userData.password);
-      this.router.navigate(['users']);
+      this.router.navigate(['users/all-users']);
     }
   }
 

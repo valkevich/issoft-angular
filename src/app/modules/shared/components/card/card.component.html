@@ -4,7 +4,7 @@
         <mat-card-subtitle>{{ data.info }}</mat-card-subtitle>
     </mat-card-header>
     <img class="card-image" mat-card-image src={{data.photo}} alt="Photo of a Shiba Inu">
-    <a mat-raised-button [routerLink]="['/edit-user', data.id]">Edit user</a>
+    <a mat-raised-button [routerLink]="['/users/edit-user', data.id]">Edit user</a>
     <button mat-icon-button color="white" aria-label="Example icon button with a heart icon" (click)="onChangeFavoritesStatus()" [ngClass]="{favoriteCard: data.favoriteStatus}">
         <mat-icon>favorite</mat-icon>
     </button>

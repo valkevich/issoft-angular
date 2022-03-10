@@ -4,24 +4,13 @@ import { NotFoundPageComponent } from './core/components/not-found-page/not-foun
 import { LoginShellComponent } from './modules/authorization/containers/login-shell/login-shell.component';
 import { RegistrationShellComponent } from './modules/authorization/containers/registration-shell/registration-shell.component';
 import { AuthGuard } from './modules/authorization/guards/auth.guard';
-import { AddUserFormShellComponent } from './modules/users/containers/add-user-form-shell/add-user-form-shell.component';
-import { EditUserShellComponent } from './modules/users/containers/edit-user-shell/edit-user-shell.component';
-import { UserListShellComponent } from './modules/users/containers/user-list-shell/user-list-shell.component';
-import { EditUserFormDeactivateGuard } from './modules/users/guards/edit-user-form-deactivate.guard';
 import { VehiclesListShellComponent } from './modules/vehicles/containers/vehicles-list-shell/vehicles-list-shell.component';
 
 const routes: Routes = [
   { path: '', component: LoginShellComponent },
   { path: 'registration', component: RegistrationShellComponent },
-  { path: 'users', component: UserListShellComponent, canActivate: [AuthGuard] },
-  { path: 'add-user', component: AddUserFormShellComponent, canActivate: [AuthGuard] },
+  { path: 'users', loadChildren: () => import('./modules/users/users.module').then(mod => mod.UsersModule)},
   { path: 'vehicles', component: VehiclesListShellComponent, canActivate: [AuthGuard] },
-  {
-    path: 'edit-user/:id',
-    component: EditUserShellComponent,
-    canActivate: [AuthGuard],
-    canDeactivate: [EditUserFormDeactivateGuard]
-  },
   { path: '**', component: NotFoundPageComponent },
 
 ];
