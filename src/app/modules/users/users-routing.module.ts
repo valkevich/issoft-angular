@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginShellComponent } from '../authorization/containers/login-shell/login-shell.component';
-import { RegistrationShellComponent } from '../authorization/containers/registration-shell/registration-shell.component';
 import { AuthGuard } from '../authorization/guards/auth.guard';
 import { AddUserFormShellComponent } from './containers/add-user-form-shell/add-user-form-shell.component';
 import { EditUserShellComponent } from './containers/edit-user-shell/edit-user-shell.component';
@@ -14,7 +12,7 @@ const routes: Routes = [
   {
     path: 'edit-user/:id',
     component: EditUserShellComponent,
-    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
     canDeactivate: [EditUserFormDeactivateGuard]
   },
 ];

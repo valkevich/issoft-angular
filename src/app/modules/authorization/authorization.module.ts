@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RegistrationShellComponent } from './containers/registration-shell/registration-shell.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -26,7 +27,8 @@ import { RegistrationComponent } from './components/registration/registration.co
     ReactiveFormsModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    RouterModule
   ],
   exports: []
 })

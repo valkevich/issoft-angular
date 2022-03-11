@@ -22,6 +22,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       )
       .subscribe((event: NavigationEnd) => this.route = event.urlAfterRedirects)
   }
+  
   public getCurrentUser(): string {
     const user = this.userService.getCurrentUser();
     return user ? user.name : '';
