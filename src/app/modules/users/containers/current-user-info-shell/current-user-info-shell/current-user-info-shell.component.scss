@@ -1,0 +1,13 @@
+.user-info {
+    margin: 0 auto;
+    padding: 30px 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+
+    .user-info__title {
+        margin: 0 auto;
+        font-size: 30px;
+    }
+}

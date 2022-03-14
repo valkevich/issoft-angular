@@ -17,6 +17,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { UsersRoutingModule } from './users-routing.module';
 import { CommonModule } from '@angular/common';
+import { FormatNamesPipe } from './pipes/format-names.pipe';
+import { CurrentUserInfoShellComponent } from './containers/current-user-info-shell/current-user-info-shell/current-user-info-shell.component';
+import { UserCompanyInfoComponent } from './components/user-company-info/user-company-info/user-company-info.component';
+import { UserPersonalInfoComponent } from './components/user-personal-info/user-personal-info/user-personal-info.component';
+import { UserContactsComponent } from './components/user-contacts/user-contacts/user-contacts.component';
 
 
 
@@ -29,6 +34,11 @@ import { CommonModule } from '@angular/common';
         AddAddressesComponent,
         EditUserShellComponent,
         UserSearchComponent,
+        FormatNamesPipe,
+        CurrentUserInfoShellComponent,
+        UserCompanyInfoComponent,
+        UserPersonalInfoComponent,
+        UserContactsComponent,
     ],
     imports: [
         CommonModule,

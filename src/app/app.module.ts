@@ -6,9 +6,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { SharedModule } from './modules/shared/shared.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { UsersModule } from './modules/users/users.module';
 import { VehiclesModule } from './modules/vehicles/vehicles.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 import { AppComponent } from './app.component';
@@ -16,6 +16,8 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { NotFoundPageComponent } from './core/components/not-found-page/not-found-page.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AuthorizationModule } from './modules/authorization/authorization.module';
+import { MainComponent } from './core/components/main/main.component';
+import { MainShellComponent } from './core/containers/main-shell/main-shell.component';
 
 
 
@@ -24,7 +26,9 @@ import { AuthorizationModule } from './modules/authorization/authorization.modul
   declarations: [
     AppComponent,
     NavbarComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    MainComponent,
+    MainShellComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,7 @@ import { AuthorizationModule } from './modules/authorization/authorization.modul
     MatTabsModule,
     SharedModule,
     MatToolbarModule,
-    // UsersModule,
+    MatMenuModule,
     VehiclesModule,
     MatDialogModule,
     HttpClientModule,

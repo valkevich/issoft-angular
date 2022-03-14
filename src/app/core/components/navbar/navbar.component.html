@@ -1,12 +1,16 @@
 <p>
     <mat-toolbar class="navigation">
-        <span>Hi {{getCurrentUser()}}. http://localhost:4200{{route}}</span>
+        <span>http://localhost:4200{{route}}</span>
         <div class="navigation-links">
-            <!-- <a class="navigation-link" routerLink="">Sign In</a>
-            <a class="navigation-link" routerLink="registration">Sign Up</a> -->
-            <a class="navigation-link" routerLink="users/all-users">Users</a>
-            <a class="navigation-link" routerLink="users/add-user">Add user</a>
-            <a class="navigation-link" routerLink="vehicles">Vehicles</a>
+            <button mat-button [matMenuTriggerFor]="menu">{{getCurrentUser()}}</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="info/company">Company info</button>
+                <button mat-menu-item routerLink="info/personal">Personal info</button>
+                <button mat-menu-item routerLink="info/contacts">Contacts</button>
+            </mat-menu>
+            <a class="navigation-link" routerLink="all-users">Users</a>
+            <a class="navigation-link" routerLink="add-user">Add user</a>
+            <a class="navigation-link" routerLink="/vehicles">Vehicles</a>
         </div>
     </mat-toolbar>
 </p>
